@@ -26,5 +26,14 @@ class Dictionary{
 
 }
 
+DICTIONARY_KEYS = {
+    end:"end"
+}
+
+let dictionary = new Dictionary("./lan/no.json");
+dictionary.setLanguage("no");
+dictionary.get(DICTIONARY_KEYS.end);
+
+
 
 export default Dictionary;
