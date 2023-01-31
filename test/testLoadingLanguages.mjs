@@ -7,17 +7,21 @@ import Dictionary from "../Dictionary.mjs"
 
 
 function testCreatingLanguageInterface(){
-    
     const dictionary = new Dictionary();
     test(dictionary != undefined, "Creating instance of Language suport module");
-
 }
 
 function testSuportingLanguageFiles(){
     const languages = ["./lan/no.json", "./lan/en.json"];
     const dictionary = new Dictionary(...languages);
-    test(dictionary.languagefiles === languages, "Testing setting of languages");
+    test(JSON.stringify(dictionary.languagefiles) === JSON.stringify(languages), "Testing setting of languages");
+}
 
+function testLoadingLangaugeResources(){
+    const languages = ["./lan/no.json", "./lan/en.json"];
+    const dictionary = new Dictionary(...languages);
+    dictionary.setLanguage("no");
+    test(JSON.stringify(dictionary.languagefiles) === JSON.stringify(languages), "Testing setting of languages");
 }
 
 

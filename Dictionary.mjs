@@ -4,12 +4,19 @@ class Dictionary{
     constructor(...languages){
         this.languagefiles = languages
         this.dictionary = null;
+        this.currentLanguage = null
     }
 
-    setLanguage = function(){
+    setLanguage = async function(lang){
         // Velger språket som skal brukes.
 
-        // Laster språket fra riktig fil (se this.languages)
+        let languageFile = this.languagefiles.find( file => {
+             return file.indexOf(lang) != -1
+            });
+        
+        this.currentLanguage = lang;
+
+        this.dictionary = await import(languageFile, { assert: { type: "json" } });
     }
 
     get = function(key){
@@ -21,19 +28,7 @@ class Dictionary{
         // retunerer alle keys i dictionary 
         return Object.keys( this.dictionary);
     }
-
-    
-
 }
-
-DICTIONARY_KEYS = {
-    end:"end"
-}
-
-let dictionary = new Dictionary("./lan/no.json");
-dictionary.setLanguage("no");
-dictionary.get(DICTIONARY_KEYS.end);
-
 
 
 export default Dictionary;
