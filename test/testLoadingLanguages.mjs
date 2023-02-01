@@ -8,7 +8,7 @@ import Dictionary from "../Dictionary.mjs"
 
 function testCreatingLanguageInterface(){
     const dictionary = new Dictionary();
-    test(dictionary != undefined, "Creating instance of Language suport module");
+    test(dictionary != undefined, "Creating instance of Language support module");
 }
 
 function testSuportingLanguageFiles(){
@@ -27,7 +27,7 @@ function testLoadingLangaugeResources(){
 
 function test(test, description){
     if(test){
-        console.log(`🟢 ${description}`)
+        console.log(`🟢 ${description}, ${test}`)
     } else{
         console.log(`🔴 ${description},  ${test}`)
     }
